@@ -1,0 +1,21 @@
+timestamp,device_id,fields_shared
+2025-08-02 22:19:13.178286,device_001,heart_rate
+2025-08-02 22:19:13.179699,device_002,
+2025-08-02 22:20:48.814916,device_001,steps
+2025-08-02 22:20:48.815988,device_002,
+2025-08-02T22:25:04.216424,device_alpha,"disk_usage, gps_location, sensor_alert"
+2025-08-02T22:25:04.217270,device_beta,disk_usage
+2025-08-02T22:26:25.488552,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,True,"critical, diagnostic, transient, archive"
+2025-08-02T22:26:25.489546,device_beta,uptime_hours,1,False,archive
+2025-08-02T22:30:18.540367,device_alpha,"disk_usage, network_activity, uptime_hours",3,"transient, diagnostic, archive, critical",True,1
+2025-08-02T22:30:18.542453,device_beta,uptime_hours,1,"transient, diagnostic, archive, critical",False,1
+2025-08-02T22:30:18.543880,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"transient, diagnostic, archive, critical",True,2
+2025-08-02T22:30:18.544975,device_beta,"disk_usage, uptime_hours",2,"transient, diagnostic, archive, critical",False,2
+2025-08-02T22:30:18.546421,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"transient, diagnostic, archive, critical",True,3
+2025-08-02T22:30:18.548250,device_beta,"disk_usage, sensor_status, uptime_hours",3,"transient, diagnostic, archive, critical",False,3
+2025-08-02T22:44:20.622387,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"transient, critical, archive, diagnostic",True,1
+2025-08-02T22:44:20.623882,device_beta,"sensor_status, uptime_hours",2,"transient, critical, archive, diagnostic",False,1
+2025-08-02T22:44:20.624937,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"transient, critical, archive, diagnostic",True,2
+2025-08-02T22:44:20.626027,device_beta,uptime_hours,1,"transient, critical, archive, diagnostic",False,2
+2025-08-02T22:44:20.626965,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"transient, critical, archive, diagnostic",True,3
+2025-08-02T22:44:20.628463,device_beta,"sensor_status, uptime_hours",2,"transient, critical, archive, diagnostic",False,3

@@ -1,0 +1,5 @@
+{
+  "heart_rate": "share_if_abnormal",
+  "temperature": "share_if_below_38",
+  "location": "do_not_share"
+}
