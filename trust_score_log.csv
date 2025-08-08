@@ -11,3 +11,9 @@ timestamp,device_id,score_delta,current_score
 2025-08-02T22:44:20.626242,device_beta,2,6
 2025-08-02T22:44:20.627246,device_alpha,16,48
 2025-08-02T22:44:20.628863,device_beta,4,10
+2025-08-08T12:42:12.091490,device_alpha,6,6
+2025-08-08T12:42:12.109217,device_beta,4,4
+2025-08-08T12:42:12.111747,device_alpha,16,22
+2025-08-08T12:42:12.112984,device_beta,4,8
+2025-08-08T12:42:12.114566,device_alpha,16,38
+2025-08-08T12:42:12.118415,device_beta,6,14
