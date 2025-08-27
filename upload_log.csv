@@ -25,3 +25,21 @@ timestamp,device_id,fields_shared
 2025-08-08T12:42:12.112755,device_beta,"disk_usage, uptime_hours",2,"archive, critical, transient, diagnostic",False,2
 2025-08-08T12:42:12.114344,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"archive, critical, transient, diagnostic",True,3
 2025-08-08T12:42:12.118038,device_beta,"disk_usage, sensor_status, uptime_hours",3,"archive, critical, transient, diagnostic",False,3
+2025-08-27T12:51:46.318553,device_alpha,"cpu_usage, disk_usage, network_activity, uptime_hours",4,"transient, critical, diagnostic, archive",True,1
+2025-08-27T12:51:46.320865,device_beta,"disk_usage, sensor_status, uptime_hours",3,"transient, critical, diagnostic, archive",False,1
+2025-08-27T12:51:46.322537,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"transient, critical, diagnostic, archive",True,2
+2025-08-27T12:51:46.323627,device_beta,"sensor_status, uptime_hours",2,"transient, critical, diagnostic, archive",False,2
+2025-08-27T12:51:46.324658,device_alpha,"disk_usage, network_activity, uptime_hours",3,"transient, critical, diagnostic, archive",True,3
+2025-08-27T12:51:46.325691,device_beta,"disk_usage, sensor_status, uptime_hours",3,"transient, critical, diagnostic, archive",False,3
+2025-08-27T15:46:36.054038,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, uptime_hours",5,"archive, critical, diagnostic, transient",True,1
+2025-08-27T15:46:36.055465,device_beta,uptime_hours,1,"archive, critical, diagnostic, transient",False,1
+2025-08-27T15:46:36.056370,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"archive, critical, diagnostic, transient",True,2
+2025-08-27T15:46:36.057211,device_beta,"sensor_status, uptime_hours",2,"archive, critical, diagnostic, transient",False,2
+2025-08-27T15:46:36.058081,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"archive, critical, diagnostic, transient",True,3
+2025-08-27T15:46:36.059538,device_beta,"sensor_status, uptime_hours",2,"archive, critical, diagnostic, transient",False,3
+2025-08-27T15:56:52.880354,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"critical, diagnostic, transient, archive",True,1
+2025-08-27T15:56:52.881449,device_beta,uptime_hours,1,"critical, diagnostic, transient, archive",False,1
+2025-08-27T15:56:52.882450,device_alpha,"cpu_usage, disk_usage, memory_usage, network_activity, gps_location, sensor_status, uptime_hours, log_entry",8,"critical, diagnostic, transient, archive",True,2
+2025-08-27T15:56:52.883482,device_beta,"sensor_status, uptime_hours",2,"critical, diagnostic, transient, archive",False,2
+2025-08-27T15:56:52.884864,device_alpha,"disk_usage, network_activity, uptime_hours, log_entry",4,"critical, diagnostic, transient, archive",True,3
+2025-08-27T15:56:52.886792,device_beta,"disk_usage, sensor_status, uptime_hours",3,"critical, diagnostic, transient, archive",False,3

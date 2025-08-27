@@ -1,20 +1,10 @@
-
-
-
-
-
-
-
-
-
-
-
-
 import random
 import hashlib
 import csv
 import os
 from datetime import datetime
+import matplotlib.pyplot as plt
+import pandas as pd
 
 # Policy Database with versioning
 POLICY_DB = {
@@ -53,6 +43,9 @@ DEVICES = {
     "device_alpha": {"user": "admin_node", "role": "admin", "trust_score": 0},
     "device_beta": {"user": "ops_node", "role": "technician", "trust_score": 0}
 }
+
+# To store data for table generation
+summary_data = []
 
 # Simulate IoT data
 def simulate_data():
@@ -94,16 +87,13 @@ def apply_policy(data, policy_set, user):
     rule_set = policy_set["rules"]
     override = policy_set.get("override_on_alert", False)
     alert_triggered = data.get("sensor_status") in ["Critical", "Overheat", "Motion"]
-
     for field, value in data.items():
         rule = rule_set.get(field, "do_not_share")
         tag = classify_tag(field)
         tags.append(tag)
-
         if override and alert_triggered:
             filtered[field] = encrypt(value)
             continue
-
         try:
             if rule == "always_share":
                 filtered[field] = encrypt(value)
@@ -123,8 +113,7 @@ def apply_policy(data, policy_set, user):
                 filtered[field] = encrypt(value)
         except Exception:
             violations.append((field, value, rule))
-
-    return filtered, violations, tags
+    return filtered, violations, tags, alert_triggered
 
 # CSV logger
 def log_to_csv(filename, header, row):
@@ -175,7 +164,6 @@ def trust_score_update(device_id, shared_fields):
     score_file = "trust_score_log.csv"
     trust_boost = len(shared_fields) * 2
     DEVICES[device_id]["trust_score"] += trust_boost
-
     row = {
         "timestamp": datetime.now().isoformat(),
         "device_id": device_id,
@@ -184,35 +172,68 @@ def trust_score_update(device_id, shared_fields):
     }
     log_to_csv(score_file, row.keys(), row)
 
+# Generate and save summary table as PNG
+def generate_summary_table_png(data, filename):
+    df = pd.DataFrame(data)
+    # Rearrange columns to desired order
+    cols = ["Cycle", "Device", "Role", "Alert Triggered", "Fields Shared", "Fields Count", "Trust Score"]
+    df = df[cols]
+
+    # Create plot figure for table
+    height = max(len(data)*0.7 + 1, 4)  # minimum 4 inches tall
+    fig, ax = plt.subplots(figsize=(10, height))
+    ax.axis('off')
+    mpl_table = ax.table(cellText=df.values, colLabels=df.columns, cellLoc='center', loc='center')
+    mpl_table.auto_set_font_size(False)
+    mpl_table.set_fontsize(10)
+    mpl_table.auto_set_column_width(col=list(range(len(cols))))
+
+    plt.savefig(filename, bbox_inches='tight')
+    plt.close()
+
 # Simulation Engine
 def simulate_cycle(cycle_id=1):
     for device_id, user in DEVICES.items():
         print(f"\n[Cycle {cycle_id}] Processing {device_id} ({user['role']})")
-
         raw_data = simulate_data()
         print("Raw:", raw_data)
-
         policy_set = POLICY_DB.get(device_id)
         if not policy_set:
             print("No policy assigned.")
             continue
-
-        filtered, violations, tags = apply_policy(raw_data, policy_set, user)
+        filtered, violations, tags, alert_triggered = apply_policy(raw_data, policy_set, user)
         print("Shared:", filtered)
-
         if filtered:
             log_cloud_upload(device_id, filtered)
             log_audit(device_id, list(filtered.keys()), tags, cycle_id, policy_set.get("override_on_alert", False))
             trust_score_update(device_id, filtered)
+
         if violations:
             log_violation(device_id, violations)
+
+        # Append summary info for table generation
+        summary_data.append({
+            "Cycle": cycle_id,
+            "Device": device_id,
+            "Role": user["role"],
+            "Alert Triggered": alert_triggered,
+            "Fields Shared": ", ".join(filtered.keys()) if filtered else "None",
+            "Fields Count": len(filtered),
+            "Trust Score": DEVICES[device_id]["trust_score"]
+        })
 
 # Run Simulation
 for i in range(1, 4):  # Simulate 3 cycles
     simulate_cycle(cycle_id=i)
+
+# Generate summary table image after simulation
+
+
+generate_summary_table_png(summary_data, "simulation_summary.png")
 
 print("\nSimulation complete. Output written to:")
 print("- cloud_storage.csv")
 print("- upload_log.csv")
 print("- trust_score_log.csv")
 print("- policy_violation_log.csv")
+print("- simulation_summary.png (summary table image)")
